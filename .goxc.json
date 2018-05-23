@@ -1,0 +1,16 @@
+{
+	"ArtifactsDest": "pkg",
+	"Tasks": [
+		"default",
+		"publish-github"
+	],
+	"Os": "linux darwin windows",
+	"PackageVersion": "1.0.0",
+	"TaskSettings": {
+		"publish-github": {
+			"owner": "ngtk",
+			"repository": "good-morning"
+		}
+	},
+	"ConfigVersion": "0.9"
+}
