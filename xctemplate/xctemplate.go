@@ -6,6 +6,7 @@ import (
 	"os"
 
 	"github.com/gobuffalo/packr"
+	"github.com/mitchellh/go-homedir"
 	"github.com/urfave/cli"
 )
 
@@ -45,6 +46,23 @@ func main() {
 				}
 				templateString := box.String("Swift.xctemplate/___FILEBASENAME___.swift")
 				swiftFile.Write(([]byte)(templateString))
+				fmt.Println("Created.")
+
+				return nil
+			},
+		},
+		{
+			Name:  "link",
+			Usage: "generate a new template",
+			Action: func(c *cli.Context) error {
+				currentDir, _ := os.Getwd()
+				templateDir := fmt.Sprintf("%s/Templates", currentDir)
+
+				homeDir, _ := homedir.Dir()
+				globalDir := fmt.Sprintf("%s/Library/Developer/Xcode/Templates/Foo", homeDir)
+
+				os.Symlink(templateDir, globalDir)
+				fmt.Println("Linked.")
 
 				return nil
 			},
@@ -55,4 +73,9 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
+}
+
+func Exists(filename string) bool {
+	_, err := os.Stat(filename)
+	return err == nil
 }
