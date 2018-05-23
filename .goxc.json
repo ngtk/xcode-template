@@ -9,7 +9,7 @@
 	"TaskSettings": {
 		"publish-github": {
 			"owner": "ngtk",
-			"repository": "good-morning"
+			"repository": "xcode-template"
 		}
 	},
 	"ConfigVersion": "0.9"
