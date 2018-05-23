@@ -15,3 +15,4 @@
 
 vendor
 .goxc.local.json
+pkg/
