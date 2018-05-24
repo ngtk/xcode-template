@@ -2,7 +2,7 @@
 👩‍💻xcode-template makes it easy to create a template and share with your project
 
 ## Install
-You can install using Homebrew if you use MacOS.
+You can install using Homebrew.
 
 ```sh
 $ brew install ngtk/tools/xcode-template
