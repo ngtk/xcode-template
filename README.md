@@ -1,4 +1,4 @@
-# xcode-template
+# xcode-template [![GitHub version](https://badge.fury.io/gh/ngtk%2Fxcode-template.svg)](https://badge.fury.io/gh/ngtk%2Fxcode-template)
 👩‍💻xcode-template makes it easy to create a template and share with your project
 
 ## Install
