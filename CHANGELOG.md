@@ -26,7 +26,7 @@ Nothing
 - Clean up unused code
 
 
-## [1.0.0] - 2017-05-23
+## [0.1.0] - 2017-05-23
 First release
 ### Added
 - Implement command "generate" and "link"
