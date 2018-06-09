@@ -4,6 +4,8 @@ import (
 	"fmt"
 	"log"
 	"os"
+	"os/exec"
+	"strings"
 
 	"github.com/gobuffalo/packr"
 	"github.com/mitchellh/go-homedir"
@@ -59,7 +61,10 @@ func main() {
 				templateDir := fmt.Sprintf("%s/Templates", currentDir)
 
 				homeDir, _ := homedir.Dir()
-				globalDir := fmt.Sprintf("%s/Library/Developer/Xcode/Templates/Foo", homeDir)
+				projectRootDir, _ := exec.Command("git", "rev-parse", "--show-toplevel").Output()
+				projectRootDirParts := strings.Split(fmt.Sprintf("%s", projectRootDir), "/")
+				projectName := projectRootDirParts[len(projectRootDirParts)-1]
+				globalDir := fmt.Sprintf("%s/Library/Developer/Xcode/Templates/%s", homeDir, projectName)
 
 				os.Symlink(templateDir, globalDir)
 				fmt.Println("Linked.")
