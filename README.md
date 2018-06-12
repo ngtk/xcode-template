@@ -24,7 +24,7 @@ $ xctemplate link
 ```
 
 
-## Developemnt
+## Development
 Been written in go, you can `go get github.com/ngtk/xcode-template` and change command by editing `xctemplate.go`.
 
 If you want to release new version, You have to do below:
