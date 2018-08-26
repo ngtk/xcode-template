@@ -2,20 +2,31 @@ import XCTest
 import class Foundation.Bundle
 
 final class xcode_templateTests: XCTestCase {
-    func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct
-        // results.
+    func test_init() throws {
+        let output = try? run(["init"])
+        XCTAssertEqual(output, "initialized.\n")
+    }
 
-        // Some of the APIs that we use below are available in macOS 10.13 and above.
+    func test_generate() throws {
+        let output = try? run(["generate"])
+        XCTAssertEqual(output, "generated.\n")
+    }
+
+    func test_link() throws {
+        let output = try? run(["link"])
+        XCTAssertEqual(output, "linked.\n")
+    }
+
+    private func run(_ arguments: [String]) throws -> String {
         guard #available(macOS 10.13, *) else {
-            return
+            fatalError()
         }
 
-        let fooBinary = productsDirectory.appendingPathComponent("xcode_template")
+        let fooBinary = productsDirectory.appendingPathComponent("xcode-template")
 
         let process = Process()
         process.executableURL = fooBinary
+        process.arguments = arguments
 
         let pipe = Pipe()
         process.standardOutput = pipe
@@ -24,9 +35,7 @@ final class xcode_templateTests: XCTestCase {
         process.waitUntilExit()
 
         let data = pipe.fileHandleForReading.readDataToEndOfFile()
-        let output = String(data: data, encoding: .utf8)
-
-        XCTAssertEqual(output, "Hello, world!\n")
+        return String(data: data, encoding: .utf8)!
     }
 
     /// Returns path to the built products directory.
@@ -40,8 +49,4 @@ final class xcode_templateTests: XCTestCase {
         return Bundle.main.bundleURL
       #endif
     }
-
-    static var allTests = [
-        ("testExample", testExample),
-    ]
 }
